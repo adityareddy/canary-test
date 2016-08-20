@@ -1,0 +1,435 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://hl7.org/fhir/json-schema/ExpansionProfile",
+  "$ref": "#/definitions/ExpansionProfile",
+  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "definitions": {
+    "ExpansionProfile": {
+      "allOf": [
+        {
+          "$ref": "DomainResource.schema.json/definitions/DomainResource"
+        },
+        {
+          "description": "Resource to define constraints on the Expansion of a FHIR ValueSet.",
+          "properties": {
+            "resourceType": {
+              "description": "This is a ExpansionProfile resource",
+              "type": "string",
+              "enum": [
+                "ExpansionProfile"
+              ]
+            },
+            "url": {
+              "description": "An absolute URL that is used to identify this expansion profile when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this expansion profile is (or will be) published.",
+              "type": "string"
+            },
+            "url_": {
+              "description": "Extensions for url",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "identifier": {
+              "description": "Formal identifier that is used to identify this expansion profile when it is represented in other formats, or referenced in a specification, model, design or an instance.",
+              "$ref": "Identifier.schema.json/definitions/Identifier"
+            },
+            "version": {
+              "description": "Used to identify this version of the expansion profile when it is referenced in a specification, model, design or instance.",
+              "type": "string"
+            },
+            "version_": {
+              "description": "Extensions for version",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "name": {
+              "description": "A free text natural language name for the expansion profile.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "status": {
+              "description": "The status of the expansion profile.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "status_": {
+              "description": "Extensions for status",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "experimental": {
+              "description": "This expansion profile was authored for testing purposes (or education/evaluation/marketing), and is not intended for genuine production usage.",
+              "type": "true | false"
+            },
+            "experimental_": {
+              "description": "Extensions for experimental",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "publisher": {
+              "description": "The name of the individual or organization that published the expansion profile.",
+              "type": "string"
+            },
+            "publisher_": {
+              "description": "Extensions for publisher",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "contact": {
+              "description": "Contacts to assist a user in finding and communicating with the publisher.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ExpansionProfile.Contact"
+              }
+            },
+            "date": {
+              "description": "The date that the expansion profile status was last changed. The date must change when the business version changes, if it does, and it must change if the status code changes.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            },
+            "date_": {
+              "description": "Extensions for date",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "description": {
+              "description": "A free text natural language description of the use of the expansion profile - reason for definition,  conditions of use, etc. The description may include a list of expected usages for the expansion profile and can also describe the approach taken to build the expansion profile.",
+              "type": "string"
+            },
+            "description_": {
+              "description": "Extensions for description",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "codeSystem": {
+              "description": "A set of criteria that provide the constraints imposed on the value set expansion by including or excluding codes from specific code systems (or versions).",
+              "$ref": "#/definitions/ExpansionProfile.CodeSystem"
+            },
+            "includeDesignations": {
+              "description": "Controls whether concept designations are to be included or excluded in value set expansions.",
+              "type": "true | false"
+            },
+            "includeDesignations_": {
+              "description": "Extensions for includeDesignations",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "designation": {
+              "description": "A set of criteria that provide the constraints imposed on the value set expansion by including or excluding designations.",
+              "$ref": "#/definitions/ExpansionProfile.Designation"
+            },
+            "includeDefinition": {
+              "description": "Controls whether the value set definition is included or excluded in value set expansions.",
+              "type": "true | false"
+            },
+            "includeDefinition_": {
+              "description": "Extensions for includeDefinition",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "includeInactive": {
+              "description": "Controls whether inactive concepts are included or excluded in value set expansions.",
+              "type": "true | false"
+            },
+            "includeInactive_": {
+              "description": "Extensions for includeInactive",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "excludeNested": {
+              "description": "Controls whether or not the value set expansion includes nested codes (i.e. ValueSet.expansion.contains.contains).",
+              "type": "true | false"
+            },
+            "excludeNested_": {
+              "description": "Extensions for excludeNested",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "excludeNotForUI": {
+              "description": "Controls whether or not the value set expansion includes codes which cannot be displayed in user interfaces.",
+              "type": "true | false"
+            },
+            "excludeNotForUI_": {
+              "description": "Extensions for excludeNotForUI",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "excludePostCoordinated": {
+              "description": "Controls whether or not the value set expansion includes post coordinated codes.",
+              "type": "true | false"
+            },
+            "excludePostCoordinated_": {
+              "description": "Extensions for excludePostCoordinated",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "displayLanguage": {
+              "description": "Specifies the language to be used for description in the expansions i.e. the language to be used for ValueSet.expansion.contains.display.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "displayLanguage_": {
+              "description": "Extensions for displayLanguage",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "limitedExpansion": {
+              "description": "If the value set being expanded is incomplete (because it is too big to expand), return a limited expansion (a subset) with an indicator that expansion is incomplete.",
+              "type": "true | false"
+            },
+            "limitedExpansion_": {
+              "description": "Extensions for limitedExpansion",
+              "$ref": "Element.schema.json/definitions/Element"
+            }
+          },
+          "required": [
+            "resourceType"
+          ]
+        }
+      ]
+    },
+    "ExpansionProfile.Contact": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "Resource to define constraints on the Expansion of a FHIR ValueSet.",
+          "properties": {
+            "name": {
+              "description": "The name of an individual to contact regarding the expansion profile.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "telecom": {
+              "description": "Contact details for individual (if a name was provided) or the publisher.",
+              "type": "array",
+              "items": {
+                "$ref": "ContactPoint.schema.json/definitions/ContactPoint"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ExpansionProfile.CodeSystem": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "Resource to define constraints on the Expansion of a FHIR ValueSet.",
+          "properties": {
+            "include": {
+              "description": "Code systems to be included in value set expansions.",
+              "$ref": "#/definitions/ExpansionProfile.Include"
+            },
+            "exclude": {
+              "description": "Code systems to be excluded from value set expansions.",
+              "$ref": "#/definitions/ExpansionProfile.Exclude"
+            }
+          }
+        }
+      ]
+    },
+    "ExpansionProfile.Include": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "Resource to define constraints on the Expansion of a FHIR ValueSet.",
+          "properties": {
+            "codeSystem": {
+              "description": "A data group for each code system to be included.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ExpansionProfile.CodeSystem1"
+              }
+            }
+          },
+          "required": [
+            "codeSystem"
+          ]
+        }
+      ]
+    },
+    "ExpansionProfile.CodeSystem1": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "Resource to define constraints on the Expansion of a FHIR ValueSet.",
+          "properties": {
+            "system": {
+              "description": "An absolute URI which is the code system to be included.",
+              "type": "string"
+            },
+            "system_": {
+              "description": "Extensions for system",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "version": {
+              "description": "The version of the code system from which codes in the expansion should be included.",
+              "type": "string"
+            },
+            "version_": {
+              "description": "Extensions for version",
+              "$ref": "Element.schema.json/definitions/Element"
+            }
+          }
+        }
+      ]
+    },
+    "ExpansionProfile.Exclude": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "Resource to define constraints on the Expansion of a FHIR ValueSet.",
+          "properties": {
+            "codeSystem": {
+              "description": "A data group for each code system to be excluded.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ExpansionProfile.CodeSystem2"
+              }
+            }
+          },
+          "required": [
+            "codeSystem"
+          ]
+        }
+      ]
+    },
+    "ExpansionProfile.CodeSystem2": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "Resource to define constraints on the Expansion of a FHIR ValueSet.",
+          "properties": {
+            "system": {
+              "description": "An absolute URI which is the code system to be excluded.",
+              "type": "string"
+            },
+            "system_": {
+              "description": "Extensions for system",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "version": {
+              "description": "The version of the code system from which codes in the expansion should be excluded.",
+              "type": "string"
+            },
+            "version_": {
+              "description": "Extensions for version",
+              "$ref": "Element.schema.json/definitions/Element"
+            }
+          }
+        }
+      ]
+    },
+    "ExpansionProfile.Designation": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "Resource to define constraints on the Expansion of a FHIR ValueSet.",
+          "properties": {
+            "include": {
+              "description": "Designations to be included.",
+              "$ref": "#/definitions/ExpansionProfile.Include1"
+            },
+            "exclude": {
+              "description": "Designations to be excluded.",
+              "$ref": "#/definitions/ExpansionProfile.Exclude1"
+            }
+          }
+        }
+      ]
+    },
+    "ExpansionProfile.Include1": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "Resource to define constraints on the Expansion of a FHIR ValueSet.",
+          "properties": {
+            "designation": {
+              "description": "A data group for each designation to be included.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ExpansionProfile.Designation1"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ExpansionProfile.Designation1": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "Resource to define constraints on the Expansion of a FHIR ValueSet.",
+          "properties": {
+            "language": {
+              "description": "The language this designation is defined for.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "language_": {
+              "description": "Extensions for language",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "use": {
+              "description": "Designation uses for inclusion in the expansion.",
+              "$ref": "Coding.schema.json/definitions/Coding"
+            }
+          }
+        }
+      ]
+    },
+    "ExpansionProfile.Exclude1": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "Resource to define constraints on the Expansion of a FHIR ValueSet.",
+          "properties": {
+            "designation": {
+              "description": "A data group for each designation to be excluded.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ExpansionProfile.Designation2"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ExpansionProfile.Designation2": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "Resource to define constraints on the Expansion of a FHIR ValueSet.",
+          "properties": {
+            "language": {
+              "description": "The language this designation is defined for.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "language_": {
+              "description": "Extensions for language",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "use": {
+              "description": "Designation uses for exclusion in the expansion.",
+              "$ref": "Coding.schema.json/definitions/Coding"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

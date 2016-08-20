@@ -1,0 +1,341 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://hl7.org/fhir/json-schema/OperationDefinition",
+  "$ref": "#/definitions/OperationDefinition",
+  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "definitions": {
+    "OperationDefinition": {
+      "allOf": [
+        {
+          "$ref": "DomainResource.schema.json/definitions/DomainResource"
+        },
+        {
+          "description": "A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).",
+          "properties": {
+            "resourceType": {
+              "description": "This is a OperationDefinition resource",
+              "type": "string",
+              "enum": [
+                "OperationDefinition"
+              ]
+            },
+            "url": {
+              "description": "An absolute URL that is used to identify this operation definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this operation definition is (or will be) published.",
+              "type": "string"
+            },
+            "url_": {
+              "description": "Extensions for url",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "version": {
+              "description": "The identifier that is used to identify this version of the profile when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.",
+              "type": "string"
+            },
+            "version_": {
+              "description": "Extensions for version",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "name": {
+              "description": "A free text natural language name identifying the operation.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "status": {
+              "description": "The status of the profile.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "status_": {
+              "description": "Extensions for status",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "kind": {
+              "description": "Whether this is an operation or a named query.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "kind_": {
+              "description": "Extensions for kind",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "experimental": {
+              "description": "This profile was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.",
+              "type": "true | false"
+            },
+            "experimental_": {
+              "description": "Extensions for experimental",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "date": {
+              "description": "The date this version of the operation definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the Operation Definition changes.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            },
+            "date_": {
+              "description": "Extensions for date",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "publisher": {
+              "description": "The name of the individual or organization that published the operation definition.",
+              "type": "string"
+            },
+            "publisher_": {
+              "description": "Extensions for publisher",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "contact": {
+              "description": "Contacts to assist a user in finding and communicating with the publisher.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OperationDefinition.Contact"
+              }
+            },
+            "description": {
+              "description": "A free text natural language description of the profile and its use.",
+              "type": "string"
+            },
+            "description_": {
+              "description": "Extensions for description",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "useContext": {
+              "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of operation definitions.",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "requirements": {
+              "description": "Explains why this operation definition is needed and why it\u0027s been constrained as it has.",
+              "type": "string"
+            },
+            "requirements_": {
+              "description": "Extensions for requirements",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "idempotent": {
+              "description": "Operations that are idempotent (see [HTTP specification definition of idempotent](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)) may be invoked by performing an HTTP GET operation instead of a POST.",
+              "type": "true | false"
+            },
+            "idempotent_": {
+              "description": "Extensions for idempotent",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "code": {
+              "description": "The name used to invoke the operation.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "code_": {
+              "description": "Extensions for code",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "comment": {
+              "description": "Additional information about how to use this operation or named query.",
+              "type": "string"
+            },
+            "comment_": {
+              "description": "Extensions for comment",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "base": {
+              "description": "Indicates that this operation definition is a constraining profile on the base.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "system": {
+              "description": "Indicates whether this operation or named query can be invoked at the system level (e.g. without needing to choose a resource type for the context).",
+              "type": "true | false"
+            },
+            "system_": {
+              "description": "Extensions for system",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "type": {
+              "description": "Indicates whether this operation or named query can be invoked at the resource type level for any given resource type level (e.g. without needing to choose a resource type for the context).",
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+              }
+            },
+            "type_": {
+              "description": "Extensions for type",
+              "items": {
+                "$ref": "Element.schema.json/definitions/Element"
+              }
+            },
+            "instance": {
+              "description": "Indicates whether this operation can be invoked on a particular instance of one of the given types.",
+              "type": "true | false"
+            },
+            "instance_": {
+              "description": "Extensions for instance",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "parameter": {
+              "description": "The parameters for the operation/query.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OperationDefinition.Parameter"
+              }
+            }
+          },
+          "required": [
+            "resourceType"
+          ]
+        }
+      ]
+    },
+    "OperationDefinition.Contact": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).",
+          "properties": {
+            "name": {
+              "description": "The name of an individual to contact regarding the operation definition.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "telecom": {
+              "description": "Contact details for individual (if a name was provided) or the publisher.",
+              "type": "array",
+              "items": {
+                "$ref": "ContactPoint.schema.json/definitions/ContactPoint"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "OperationDefinition.Parameter": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).",
+          "properties": {
+            "name": {
+              "description": "The name of used to identify the parameter.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "use": {
+              "description": "Whether this is an input or an output parameter.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "use_": {
+              "description": "Extensions for use",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "min": {
+              "description": "The minimum number of times this parameter SHALL appear in the request or response.",
+              "type": "number",
+              "pattern": "-?([0]|([1-9][0-9]*))"
+            },
+            "min_": {
+              "description": "Extensions for min",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "max": {
+              "description": "The maximum number of times this element is permitted to appear in the request or response.",
+              "type": "string"
+            },
+            "max_": {
+              "description": "Extensions for max",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "documentation": {
+              "description": "Describes the meaning or use of this parameter.",
+              "type": "string"
+            },
+            "documentation_": {
+              "description": "Extensions for documentation",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "type": {
+              "description": "The type for this parameter.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "type_": {
+              "description": "Extensions for type",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "searchType": {
+              "description": "How the parameter is understood as a search parameter. This is only used if the parameter type is \u0027string\u0027.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "searchType_": {
+              "description": "Extensions for searchType",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "profile": {
+              "description": "A profile the specifies the rules that this parameter must conform to.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "binding": {
+              "description": "Binds to a value set if this parameter is coded (code, Coding, CodeableConcept).",
+              "$ref": "#/definitions/OperationDefinition.Binding"
+            },
+            "part": {
+              "description": "The parts of a nested Parameter.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/OperationDefinition.Parameter"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "OperationDefinition.Binding": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A formal computable definition of an operation (on the RESTful interface) or a named query (using the search interaction).",
+          "properties": {
+            "strength": {
+              "description": "Indicates the degree of conformance expectations associated with this binding - that is, the degree to which the provided value set must be adhered to in the instances.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "strength_": {
+              "description": "Extensions for strength",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "valueSetUri": {
+              "description": "Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.",
+              "type": "string"
+            },
+            "valueSetUri_": {
+              "description": "Extensions for valueSetUri",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "valueSetReference": {
+              "description": "Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

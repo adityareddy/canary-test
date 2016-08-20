@@ -1,0 +1,932 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://hl7.org/fhir/json-schema/Conformance",
+  "$ref": "#/definitions/Conformance",
+  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "definitions": {
+    "Conformance": {
+      "allOf": [
+        {
+          "$ref": "DomainResource.schema.json/definitions/DomainResource"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "resourceType": {
+              "description": "This is a Conformance resource",
+              "type": "string",
+              "enum": [
+                "Conformance"
+              ]
+            },
+            "url": {
+              "description": "An absolute URL that is used to identify this conformance statement when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this conformance statement is (or will be) published.",
+              "type": "string"
+            },
+            "url_": {
+              "description": "Extensions for url",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "version": {
+              "description": "The identifier that is used to identify this version of the conformance statement when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.",
+              "type": "string"
+            },
+            "version_": {
+              "description": "Extensions for version",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "name": {
+              "description": "A free text natural language name identifying the conformance statement.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "status": {
+              "description": "The status of this conformance statement.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "status_": {
+              "description": "Extensions for status",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "experimental": {
+              "description": "A flag to indicate that this conformance statement is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.",
+              "type": "true | false"
+            },
+            "experimental_": {
+              "description": "Extensions for experimental",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "date": {
+              "description": "The date  (and optionally time) when the conformance statement was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the conformance statement changes.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            },
+            "date_": {
+              "description": "Extensions for date",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "publisher": {
+              "description": "The name of the individual or organization that published the conformance.",
+              "type": "string"
+            },
+            "publisher_": {
+              "description": "Extensions for publisher",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "contact": {
+              "description": "Contacts to assist a user in finding and communicating with the publisher.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Conformance.Contact"
+              }
+            },
+            "description": {
+              "description": "A free text natural language description of the conformance statement and its use. Typically, this is used when the conformance statement describes a desired rather than an actual solution, for example as a formal expression of requirements as part of an RFP.",
+              "type": "string"
+            },
+            "description_": {
+              "description": "Extensions for description",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "useContext": {
+              "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of conformance statements.",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "requirements": {
+              "description": "Explains why this conformance statement is needed and why it\u0027s been constrained as it has.",
+              "type": "string"
+            },
+            "requirements_": {
+              "description": "Extensions for requirements",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "copyright": {
+              "description": "A copyright statement relating to the conformance statement and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the system described by the conformance statement.",
+              "type": "string"
+            },
+            "copyright_": {
+              "description": "Extensions for copyright",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "kind": {
+              "description": "The way that this statement is intended to be used, to describe an actual running instance of software, a particular product (kind not instance of software) or a class of implementation (e.g. a desired purchase).",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "kind_": {
+              "description": "Extensions for kind",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "instantiates": {
+              "description": "Reference to a canonical URL of another conformance that this software implements or uses. This conformance statement is a published API description that corresponds to a business service. The rest of the conformance statement does not need to repeat the details of the referenced Conformance resource, but can do so.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "instantiates_": {
+              "description": "Extensions for instantiates",
+              "items": {
+                "$ref": "Element.schema.json/definitions/Element"
+              }
+            },
+            "software": {
+              "description": "Software that is covered by this conformance statement.  It is used when the conformance statement describes the capabilities of a particular software version, independent of an installation.",
+              "$ref": "#/definitions/Conformance.Software"
+            },
+            "implementation": {
+              "description": "Identifies a specific implementation instance that is described by the conformance statement - i.e. a particular installation, rather than the capabilities of a software program.",
+              "$ref": "#/definitions/Conformance.Implementation"
+            },
+            "fhirVersion": {
+              "description": "The version of the FHIR specification on which this conformance statement is based.",
+              "type": "string",
+              "pattern": "[A-Za-z0-9\\-\\.]{1,64}"
+            },
+            "fhirVersion_": {
+              "description": "Extensions for fhirVersion",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "acceptUnknown": {
+              "description": "A code that indicates whether the application accepts unknown elements or extensions when reading resources.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "acceptUnknown_": {
+              "description": "Extensions for acceptUnknown",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "format": {
+              "description": "A list of the formats supported by this implementation using their content types.",
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+              }
+            },
+            "format_": {
+              "description": "Extensions for format",
+              "items": {
+                "$ref": "Element.schema.json/definitions/Element"
+              }
+            },
+            "profile": {
+              "description": "A list of profiles that represent different use cases supported by the system. For a server, \"supported by the system\" means the system hosts/produces a set of resources that are conformant to a particular profile, and allows clients that use its services to search using this profile and to find appropriate data. For a client, it means the system will search by this profile and process data according to the guidance implicit in the profile. See further discussion in [Using Profiles]{profiling.html#profile-uses}.",
+              "type": "array",
+              "items": {
+                "$ref": "Reference.schema.json/definitions/Reference"
+              }
+            },
+            "rest": {
+              "description": "A definition of the restful capabilities of the solution, if any.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Conformance.Rest"
+              }
+            },
+            "messaging": {
+              "description": "A description of the messaging capabilities of the solution.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Conformance.Messaging"
+              }
+            },
+            "document": {
+              "description": "A document definition.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Conformance.Document"
+              }
+            }
+          },
+          "required": [
+            "resourceType"
+          ]
+        }
+      ]
+    },
+    "Conformance.Contact": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "name": {
+              "description": "The name of an individual to contact regarding the conformance.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "telecom": {
+              "description": "Contact details for individual (if a name was provided) or the publisher.",
+              "type": "array",
+              "items": {
+                "$ref": "ContactPoint.schema.json/definitions/ContactPoint"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Conformance.Software": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "name": {
+              "description": "Name software is known by.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "version": {
+              "description": "The version identifier for the software covered by this statement.",
+              "type": "string"
+            },
+            "version_": {
+              "description": "Extensions for version",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "releaseDate": {
+              "description": "Date this version of the software released.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            },
+            "releaseDate_": {
+              "description": "Extensions for releaseDate",
+              "$ref": "Element.schema.json/definitions/Element"
+            }
+          }
+        }
+      ]
+    },
+    "Conformance.Implementation": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "description": {
+              "description": "Information about the specific installation that this conformance statement relates to.",
+              "type": "string"
+            },
+            "description_": {
+              "description": "Extensions for description",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "url": {
+              "description": "An absolute base URL for the implementation.  This forms the base for REST interfaces as well as the mailbox and document interfaces.",
+              "type": "string"
+            },
+            "url_": {
+              "description": "Extensions for url",
+              "$ref": "Element.schema.json/definitions/Element"
+            }
+          }
+        }
+      ]
+    },
+    "Conformance.Rest": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "mode": {
+              "description": "Identifies whether this portion of the statement is describing ability to initiate or receive restful operations.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "mode_": {
+              "description": "Extensions for mode",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "documentation": {
+              "description": "Information about the system\u0027s restful capabilities that apply across all applications, such as security.",
+              "type": "string"
+            },
+            "documentation_": {
+              "description": "Extensions for documentation",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "security": {
+              "description": "Information about security implementation from an interface perspective - what a client needs to know.",
+              "$ref": "#/definitions/Conformance.Security"
+            },
+            "resource": {
+              "description": "A specification of the restful capabilities of the solution for a specific resource type.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Conformance.Resource"
+              }
+            },
+            "interaction": {
+              "description": "A specification of restful operations supported by the system.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Conformance.Interaction1"
+              }
+            },
+            "searchParam": {
+              "description": "Search parameters that are supported for searching all resources for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Conformance.SearchParam"
+              }
+            },
+            "operation": {
+              "description": "Definition of an operation or a named query and with its parameters and their meaning and type.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Conformance.Operation"
+              }
+            },
+            "compartment": {
+              "description": "An absolute URI which is a reference to the definition of a compartment that the system supports. The reference is to a CompartmentDefinition resource by it\u0027s canonical URL.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "compartment_": {
+              "description": "Extensions for compartment",
+              "items": {
+                "$ref": "Element.schema.json/definitions/Element"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Conformance.Security": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "cors": {
+              "description": "Server adds CORS headers when responding to requests - this enables javascript applications to use the server.",
+              "type": "true | false"
+            },
+            "cors_": {
+              "description": "Extensions for cors",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "service": {
+              "description": "Types of security services are supported/required by the system.",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "description": {
+              "description": "General description of how security works.",
+              "type": "string"
+            },
+            "description_": {
+              "description": "Extensions for description",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "certificate": {
+              "description": "Certificates associated with security profiles.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Conformance.Certificate"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Conformance.Certificate": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "type": {
+              "description": "Mime type for certificate.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "type_": {
+              "description": "Extensions for type",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "blob": {
+              "description": "Actual certificate.",
+              "type": "string"
+            },
+            "blob_": {
+              "description": "Extensions for blob",
+              "$ref": "Element.schema.json/definitions/Element"
+            }
+          }
+        }
+      ]
+    },
+    "Conformance.Resource": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "type": {
+              "description": "A type of resource exposed via the restful interface.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "type_": {
+              "description": "Extensions for type",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "profile": {
+              "description": "A specification of the profile that describes the solution\u0027s overall support for the resource, including any constraints on cardinality, bindings, lengths or other limitations. See further discussion in [Using Profiles]{profiling.html#profile-uses}.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "documentation": {
+              "description": "Additional information about the resource type is used by the system.",
+              "type": "string"
+            },
+            "documentation_": {
+              "description": "Extensions for documentation",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "interaction": {
+              "description": "Identifies a restful operation supported by the solution.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Conformance.Interaction"
+              }
+            },
+            "versioning": {
+              "description": "This field is set to no-version to specify that the system does not support (server) or use (client) versioning for this resource type. If this has some other value, the server must at least correctly track and populate the versionId meta-property on resources. If the value is \u0027versioned-update\u0027, then the server supports all the versioning features, including using e-tags for version integrity in the API.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "versioning_": {
+              "description": "Extensions for versioning",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "readHistory": {
+              "description": "A flag for whether the server is able to return past versions as part of the vRead operation.",
+              "type": "true | false"
+            },
+            "readHistory_": {
+              "description": "Extensions for readHistory",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "updateCreate": {
+              "description": "A flag to indicate that the server allows or needs to allow the client to create new identities on the server (e.g. that is, the client PUTs to a location where there is no existing resource). Allowing this operation means that the server allows the client to create new identities on the server.",
+              "type": "true | false"
+            },
+            "updateCreate_": {
+              "description": "Extensions for updateCreate",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "conditionalCreate": {
+              "description": "A flag that indicates that the server supports conditional create.",
+              "type": "true | false"
+            },
+            "conditionalCreate_": {
+              "description": "Extensions for conditionalCreate",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "conditionalRead": {
+              "description": "A code that indicates how the server supports conditional read.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "conditionalRead_": {
+              "description": "Extensions for conditionalRead",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "conditionalUpdate": {
+              "description": "A flag that indicates that the server supports conditional update.",
+              "type": "true | false"
+            },
+            "conditionalUpdate_": {
+              "description": "Extensions for conditionalUpdate",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "conditionalDelete": {
+              "description": "A code that indicates how the server supports conditional delete.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "conditionalDelete_": {
+              "description": "Extensions for conditionalDelete",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "searchInclude": {
+              "description": "A list of _include values supported by the server.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "searchInclude_": {
+              "description": "Extensions for searchInclude",
+              "items": {
+                "$ref": "Element.schema.json/definitions/Element"
+              }
+            },
+            "searchRevInclude": {
+              "description": "A list of _revinclude (reverse include) values supported by the server.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "searchRevInclude_": {
+              "description": "Extensions for searchRevInclude",
+              "items": {
+                "$ref": "Element.schema.json/definitions/Element"
+              }
+            },
+            "searchParam": {
+              "description": "Search parameters for implementations to support and/or make use of - either references to ones defined in the specification, or additional ones defined for/by the implementation.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Conformance.SearchParam"
+              }
+            }
+          },
+          "required": [
+            "interaction"
+          ]
+        }
+      ]
+    },
+    "Conformance.Interaction": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "code": {
+              "description": "Coded identifier of the operation, supported by the system resource.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "code_": {
+              "description": "Extensions for code",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "documentation": {
+              "description": "Guidance specific to the implementation of this operation, such as \u0027delete is a logical delete\u0027 or \u0027updates are only allowed with version id\u0027 or \u0027creates permitted from pre-authorized certificates only\u0027.",
+              "type": "string"
+            },
+            "documentation_": {
+              "description": "Extensions for documentation",
+              "$ref": "Element.schema.json/definitions/Element"
+            }
+          }
+        }
+      ]
+    },
+    "Conformance.SearchParam": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "name": {
+              "description": "The name of the search parameter used in the interface.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "definition": {
+              "description": "An absolute URI that is a formal reference to where this parameter was first defined, so that a client can be confident of the meaning of the search parameter (a reference to [[[SearchParameter.url]]]).",
+              "type": "string"
+            },
+            "definition_": {
+              "description": "Extensions for definition",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "type": {
+              "description": "The type of value a search parameter refers to, and how the content is interpreted.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "type_": {
+              "description": "Extensions for type",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "documentation": {
+              "description": "This allows documentation of any distinct behaviors about how the search parameter is used.  For example, text matching algorithms.",
+              "type": "string"
+            },
+            "documentation_": {
+              "description": "Extensions for documentation",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "target": {
+              "description": "Types of resource (if a resource is referenced).",
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+              }
+            },
+            "target_": {
+              "description": "Extensions for target",
+              "items": {
+                "$ref": "Element.schema.json/definitions/Element"
+              }
+            },
+            "modifier": {
+              "description": "A modifier supported for the search parameter.",
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+              }
+            },
+            "modifier_": {
+              "description": "Extensions for modifier",
+              "items": {
+                "$ref": "Element.schema.json/definitions/Element"
+              }
+            },
+            "chain": {
+              "description": "Contains the names of any search parameters which may be chained to the containing search parameter. Chained parameters may be added to search parameters of type reference, and specify that resources will only be returned if they contain a reference to a resource which matches the chained parameter value. Values for this field should be drawn from Conformance.rest.resource.searchParam.name on the target resource type.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "chain_": {
+              "description": "Extensions for chain",
+              "items": {
+                "$ref": "Element.schema.json/definitions/Element"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Conformance.Interaction1": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "code": {
+              "description": "A coded identifier of the operation, supported by the system.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "code_": {
+              "description": "Extensions for code",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "documentation": {
+              "description": "Guidance specific to the implementation of this operation, such as limitations on the kind of transactions allowed, or information about system wide search is implemented.",
+              "type": "string"
+            },
+            "documentation_": {
+              "description": "Extensions for documentation",
+              "$ref": "Element.schema.json/definitions/Element"
+            }
+          }
+        }
+      ]
+    },
+    "Conformance.Operation": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "name": {
+              "description": "The name of the operation or query. For an operation, this is the name  prefixed with $ and used in the url. For a query, this is the name used in the _query parameter when the query is called.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "definition": {
+              "description": "Where the formal definition can be found.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            }
+          },
+          "required": [
+            "definition"
+          ]
+        }
+      ]
+    },
+    "Conformance.Messaging": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "endpoint": {
+              "description": "An endpoint (network accessible address) to which messages and/or replies are to be sent.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Conformance.Endpoint"
+              }
+            },
+            "reliableCache": {
+              "description": "Length if the receiver\u0027s reliable messaging cache in minutes (if a receiver) or how long the cache length on the receiver should be (if a sender).",
+              "type": "number",
+              "pattern": "[0]|([1-9][0-9]*)"
+            },
+            "reliableCache_": {
+              "description": "Extensions for reliableCache",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "documentation": {
+              "description": "Documentation about the system\u0027s messaging capabilities for this endpoint not otherwise documented by the conformance statement.  For example, process for becoming an authorized messaging exchange partner.",
+              "type": "string"
+            },
+            "documentation_": {
+              "description": "Extensions for documentation",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "event": {
+              "description": "A description of the solution\u0027s support for an event at this end-point.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Conformance.Event"
+              }
+            }
+          },
+          "required": [
+            "event"
+          ]
+        }
+      ]
+    },
+    "Conformance.Endpoint": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "protocol": {
+              "description": "A list of the messaging transport protocol(s) identifiers, supported by this endpoint.",
+              "$ref": "Coding.schema.json/definitions/Coding"
+            },
+            "address": {
+              "description": "The network address of the end-point. For solutions that do not use network addresses for routing, it can be just an identifier.",
+              "type": "string"
+            },
+            "address_": {
+              "description": "Extensions for address",
+              "$ref": "Element.schema.json/definitions/Element"
+            }
+          },
+          "required": [
+            "protocol"
+          ]
+        }
+      ]
+    },
+    "Conformance.Event": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "code": {
+              "description": "A coded identifier of a supported messaging event.",
+              "$ref": "Coding.schema.json/definitions/Coding"
+            },
+            "category": {
+              "description": "The impact of the content of the message.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "category_": {
+              "description": "Extensions for category",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "mode": {
+              "description": "The mode of this event declaration - whether application is sender or receiver.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "mode_": {
+              "description": "Extensions for mode",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "focus": {
+              "description": "A resource associated with the event.  This is the resource that defines the event.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "focus_": {
+              "description": "Extensions for focus",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "request": {
+              "description": "Information about the request for this event.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "response": {
+              "description": "Information about the response for this event.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "documentation": {
+              "description": "Guidance on how this event is handled, such as internal system trigger points, business rules, etc.",
+              "type": "string"
+            },
+            "documentation_": {
+              "description": "Extensions for documentation",
+              "$ref": "Element.schema.json/definitions/Element"
+            }
+          },
+          "required": [
+            "request",
+            "code",
+            "response"
+          ]
+        }
+      ]
+    },
+    "Conformance.Document": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.",
+          "properties": {
+            "mode": {
+              "description": "Mode of this document declaration - whether application is producer or consumer.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "mode_": {
+              "description": "Extensions for mode",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "documentation": {
+              "description": "A description of how the application supports or uses the specified document profile.  For example, when are documents created, what action is taken with consumed documents, etc.",
+              "type": "string"
+            },
+            "documentation_": {
+              "description": "Extensions for documentation",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "profile": {
+              "description": "A constraint on a resource used in the document.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            }
+          },
+          "required": [
+            "profile"
+          ]
+        }
+      ]
+    }
+  }
+}

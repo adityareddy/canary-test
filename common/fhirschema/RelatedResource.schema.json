@@ -1,0 +1,61 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://hl7.org/fhir/json-schema/RelatedResource",
+  "$ref": "#/definitions/RelatedResource",
+  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "definitions": {
+    "RelatedResource": {
+      "allOf": [
+        {
+          "$ref": "Structure.schema.json/definitions/Structure"
+        },
+        {
+          "description": "Related resources such as additional documentation, justification, or bibliographic references.",
+          "properties": {
+            "type": {
+              "description": "The type of related resource.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "type_": {
+              "description": "Extensions for type",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "display": {
+              "description": "A brief description of the document or resource being referenced, suitable for display to a consumer.",
+              "type": "string"
+            },
+            "display_": {
+              "description": "Extensions for display",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "citation": {
+              "description": "A bibliographic citation for the related resource. This text SHOULD be formatted according to an accepted citation format.",
+              "type": "string"
+            },
+            "citation_": {
+              "description": "Extensions for citation",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "url": {
+              "description": "A url for the resource that can be followed to access the actual content.",
+              "type": "string"
+            },
+            "url_": {
+              "description": "Extensions for url",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "document": {
+              "description": "The document being referenced, represented as an attachment. This is exclusive with the resource element.",
+              "$ref": "Attachment.schema.json/definitions/Attachment"
+            },
+            "resource": {
+              "description": "The related resource, such as a library, value set, profile, or other module.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

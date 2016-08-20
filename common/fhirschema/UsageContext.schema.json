@@ -1,0 +1,76 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://hl7.org/fhir/json-schema/UsageContext",
+  "$ref": "#/definitions/UsageContext",
+  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "definitions": {
+    "UsageContext": {
+      "allOf": [
+        {
+          "$ref": "Structure.schema.json/definitions/Structure"
+        },
+        {
+          "description": "Specifies clinical metadata that can be used to retrieve, index and/or categorize the knowledge artifact. This metadata can either be specific to the applicable population (e.g., age category, DRG) or the specific context of care (e.g., venue, care setting, provider of care).",
+          "properties": {
+            "patientGender": {
+              "description": "The gender of the patient. For this item type, use HL7 administrative gender codes (OID: 2.16.840.1.113883.1.11.1).",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "patientAgeGroup": {
+              "description": "A patient demographic category for which this artifact is applicable. Allows specification of age groups using coded values originating from the MeSH Code system (OID: 2.16.840.1.113883.6.177). More specifically, only codes from the AgeGroupObservationValue value set are valid for this field  [2.16.840.1.113883.11.75].",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "clinicalFocus": {
+              "description": "The clinical concept(s) addressed by the artifact.  For example, disease, diagnostic test interpretation, medication ordering. Please refer to the implementation guide on which code system and codes to use.",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "targetUser": {
+              "description": "The user types to which an artifact is targeted.  For example, PCP, Patient, Cardiologist, Behavioral Professional, Oral Health Professional, Prescriber, etc... taken from the NUCC Health Care provider taxonomyCode system (OID: 2.16.840.1.113883.6.101).",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "workflowSetting": {
+              "description": "The settings in which the artifact is intended for use.  For example, admission, pre-op, etc.",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "workflowTask": {
+              "description": "The context for the clinical task(s) represented by this artifact. Can be any task context represented by the HL7 ActTaskCode value set (OID: 2.16.840.1.113883.1.11.19846). General categories include: order entry, patient documentation and patient information review.",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "clinicalVenue": {
+              "description": "The venue in which an artifact could be used.  For example, Outpatient, Inpatient, Home, Nursing home. The code value may originate from either the HL7 ActEncounter (OID: 2.16.840.1.113883.1.11.13955) or NUCC non-individual provider codes OID: 2.16.840.1.113883.1.11.19465.",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "jurisdiction": {
+              "description": "The jurisdiction in which the artifact is intended to be used.",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

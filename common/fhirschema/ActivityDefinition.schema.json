@@ -1,0 +1,296 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://hl7.org/fhir/json-schema/ActivityDefinition",
+  "$ref": "#/definitions/ActivityDefinition",
+  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "definitions": {
+    "ActivityDefinition": {
+      "allOf": [
+        {
+          "$ref": "DomainResource.schema.json/definitions/DomainResource"
+        },
+        {
+          "description": "This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.",
+          "properties": {
+            "resourceType": {
+              "description": "This is a ActivityDefinition resource",
+              "type": "string",
+              "enum": [
+                "ActivityDefinition"
+              ]
+            },
+            "url": {
+              "description": "An absolute URL that is used to identify this asset when it is referenced. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this asset is (or will be) published.",
+              "type": "string"
+            },
+            "url_": {
+              "description": "Extensions for url",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "identifier": {
+              "description": "A logical identifier for the asset such as the CMS or NQF identifiers for a measure. Note that at least one identifier is required for non-experimental active assets.",
+              "type": "array",
+              "items": {
+                "$ref": "Identifier.schema.json/definitions/Identifier"
+              }
+            },
+            "version": {
+              "description": "The version of the asset, if any. To provide a version consistent with the Decision Support Service specification, use the format Major.Minor.Revision (e.g. 1.0.0). For more information on versioning knowledge assets, refer to the Decision Support Service specification. Note that a version is required for non-experimental active assets.",
+              "type": "string"
+            },
+            "version_": {
+              "description": "Extensions for version",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "name": {
+              "description": "A machine-friendly name for the asset. This name should be usable as an identifier for the asset by machine processing applications such as code generation.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "title": {
+              "description": "A short, descriptive, user-friendly title for the asset.",
+              "type": "string"
+            },
+            "title_": {
+              "description": "Extensions for title",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "status": {
+              "description": "The status of the asset.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "status_": {
+              "description": "Extensions for status",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "experimental": {
+              "description": "Determines whether the asset was developed for testing purposes (or education/evaluation/marketing), and is not intended to be used in production environments.",
+              "type": "true | false"
+            },
+            "experimental_": {
+              "description": "Extensions for experimental",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "description": {
+              "description": "A free text natural language description of the asset from the consumer\u0027s perspective.",
+              "type": "string"
+            },
+            "description_": {
+              "description": "Extensions for description",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "purpose": {
+              "description": "A brief description of the purpose of the asset.",
+              "type": "string"
+            },
+            "purpose_": {
+              "description": "Extensions for purpose",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "usage": {
+              "description": "A detailed description of how the asset is used from a clinical perspective.",
+              "type": "string"
+            },
+            "usage_": {
+              "description": "Extensions for usage",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "publicationDate": {
+              "description": "The date on which the asset was published.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?"
+            },
+            "publicationDate_": {
+              "description": "Extensions for publicationDate",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "lastReviewDate": {
+              "description": "The date on which the asset content was last reviewed.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?"
+            },
+            "lastReviewDate_": {
+              "description": "Extensions for lastReviewDate",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "effectivePeriod": {
+              "description": "The period during which the asset content is effective.",
+              "$ref": "Period.schema.json/definitions/Period"
+            },
+            "coverage": {
+              "description": "Specifies various attributes of the patient population for whom and/or environment of care in which, the knowledge asset is applicable.",
+              "type": "array",
+              "items": {
+                "$ref": "UsageContext.schema.json/definitions/UsageContext"
+              }
+            },
+            "topic": {
+              "description": "Clinical topics related to the content of the asset.",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "contributor": {
+              "description": "A contributor to the content of the asset, including authors, editors, reviewers, and endorsers.",
+              "type": "array",
+              "items": {
+                "$ref": "Contributor.schema.json/definitions/Contributor"
+              }
+            },
+            "publisher": {
+              "description": "The name of the individual or organization that published the asset (also known as the steward for the asset). This information is required for non-experimental active artifacts.",
+              "type": "string"
+            },
+            "publisher_": {
+              "description": "Extensions for publisher",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "contact": {
+              "description": "Contact details to assist a user in finding and communicating with the publisher.",
+              "type": "array",
+              "items": {
+                "$ref": "ContactDetail.schema.json/definitions/ContactDetail"
+              }
+            },
+            "copyright": {
+              "description": "A copyright statement relating to the asset and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the asset.",
+              "type": "string"
+            },
+            "copyright_": {
+              "description": "Extensions for copyright",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "relatedResource": {
+              "description": "Related resources such as additional documentation, justification, or bibliographic references.",
+              "type": "array",
+              "items": {
+                "$ref": "RelatedResource.schema.json/definitions/RelatedResource"
+              }
+            },
+            "library": {
+              "description": "A reference to a Library resource containing any formal logic used by the asset.",
+              "type": "array",
+              "items": {
+                "$ref": "Reference.schema.json/definitions/Reference"
+              }
+            },
+            "category": {
+              "description": "High-level categorization of the type of activity.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "category_": {
+              "description": "Extensions for category",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "code": {
+              "description": "Detailed description of the type of activity; e.g. What lab test, what procedure, what kind of encounter.",
+              "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+            },
+            "timingCodeableConcept": {
+              "description": "The period, timing or frequency upon which the described activity is to occur.",
+              "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+            },
+            "timingTiming": {
+              "description": "The period, timing or frequency upon which the described activity is to occur.",
+              "$ref": "Timing.schema.json/definitions/Timing"
+            },
+            "location": {
+              "description": "Identifies the facility where the activity will occur; e.g. home, hospital, specific clinic, etc.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "participantType": {
+              "description": "The type of participant in the action.",
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+              }
+            },
+            "participantType_": {
+              "description": "Extensions for participantType",
+              "items": {
+                "$ref": "Element.schema.json/definitions/Element"
+              }
+            },
+            "productReference": {
+              "description": "Identifies the food, drug or other product being consumed or supplied in the activity.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "productCodeableConcept": {
+              "description": "Identifies the food, drug or other product being consumed or supplied in the activity.",
+              "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+            },
+            "quantity": {
+              "description": "Identifies the quantity expected to be consumed at once (per dose, per meal, etc.).",
+              "$ref": "SimpleQuantity.schema.json/definitions/SimpleQuantity"
+            },
+            "transform": {
+              "description": "A reference to a StructureMap resource that defines a transform that can be executed to produce the intent resource using the ActivityDefinition instance as the input.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "dynamicValue": {
+              "description": "Dynamic values that will be evaluated to produce values for elements of the resulting resource. For example, if the dosage of a medication must be computed based on the patient\u0027s weight, a dynamic value would be used to specify an expression that calculated the weight, and the path on the intent resource that would contain the result.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ActivityDefinition.DynamicValue"
+              }
+            }
+          },
+          "required": [
+            "resourceType"
+          ]
+        }
+      ]
+    },
+    "ActivityDefinition.DynamicValue": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "This resource allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.",
+          "properties": {
+            "description": {
+              "description": "A brief, natural language description of the intended semantics of the dynamic value.",
+              "type": "string"
+            },
+            "description_": {
+              "description": "Extensions for description",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "path": {
+              "description": "The path to the element to be customized. This is the path on the resource that will hold the result of the calculation defined by the expression.",
+              "type": "string"
+            },
+            "path_": {
+              "description": "Extensions for path",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "language": {
+              "description": "The media type of the language for the expression.",
+              "type": "string"
+            },
+            "language_": {
+              "description": "Extensions for language",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "expression": {
+              "description": "An expression specifying the value of the customized element.",
+              "type": "string"
+            },
+            "expression_": {
+              "description": "Extensions for expression",
+              "$ref": "Element.schema.json/definitions/Element"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

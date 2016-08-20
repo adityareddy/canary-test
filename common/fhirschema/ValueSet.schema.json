@@ -1,0 +1,574 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://hl7.org/fhir/json-schema/ValueSet",
+  "$ref": "#/definitions/ValueSet",
+  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "definitions": {
+    "ValueSet": {
+      "allOf": [
+        {
+          "$ref": "DomainResource.schema.json/definitions/DomainResource"
+        },
+        {
+          "description": "A value set specifies a set of codes drawn from one or more code systems.",
+          "properties": {
+            "resourceType": {
+              "description": "This is a ValueSet resource",
+              "type": "string",
+              "enum": [
+                "ValueSet"
+              ]
+            },
+            "url": {
+              "description": "An absolute URL that is used to identify this value set when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this value set is (or will be) published.",
+              "type": "string"
+            },
+            "url_": {
+              "description": "Extensions for url",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "identifier": {
+              "description": "A formal identifier that is used to identify this value set when it is represented in other formats, or referenced in a specification, model, design or an instance.",
+              "type": "array",
+              "items": {
+                "$ref": "Identifier.schema.json/definitions/Identifier"
+              }
+            },
+            "version": {
+              "description": "Used to identify this version of the value set when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the profile author manually and the value should be a timestamp.",
+              "type": "string"
+            },
+            "version_": {
+              "description": "Extensions for version",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "name": {
+              "description": "A free text natural language name describing the value set.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "status": {
+              "description": "The status of the value set.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "status_": {
+              "description": "Extensions for status",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "experimental": {
+              "description": "This valueset was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.",
+              "type": "true | false"
+            },
+            "experimental_": {
+              "description": "Extensions for experimental",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "publisher": {
+              "description": "The name of the individual or organization that published the value set.",
+              "type": "string"
+            },
+            "publisher_": {
+              "description": "Extensions for publisher",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "contact": {
+              "description": "Contacts to assist a user in finding and communicating with the publisher.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ValueSet.Contact"
+              }
+            },
+            "date": {
+              "description": "The date that the value set status was last changed. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the implementation guide changes (e.g. the \u0027content logical definition\u0027).",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            },
+            "date_": {
+              "description": "Extensions for date",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "lockedDate": {
+              "description": "If a locked date is defined, then the Content Logical Definition must be evaluated using the current version of all referenced code system(s) and value set instances as of the locked date.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?"
+            },
+            "lockedDate_": {
+              "description": "Extensions for lockedDate",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "description": {
+              "description": "A free text natural language description of the use of the value set - reason for definition, \"the semantic space\" to be included in the value set, conditions of use, etc. The description may include a list of expected usages for the value set and can also describe the approach taken to build the value set.",
+              "type": "string"
+            },
+            "description_": {
+              "description": "Extensions for description",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "useContext": {
+              "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of value set definitions.",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "immutable": {
+              "description": "If this is set to \u0027true\u0027, then no new versions of the content logical definition can be created.  Note: Other metadata might still change.",
+              "type": "true | false"
+            },
+            "immutable_": {
+              "description": "Extensions for immutable",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "requirements": {
+              "description": "Explains why this value set is needed and why it has been constrained as it has.",
+              "type": "string"
+            },
+            "requirements_": {
+              "description": "Extensions for requirements",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "copyright": {
+              "description": "A copyright statement relating to the value set and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the value set.",
+              "type": "string"
+            },
+            "copyright_": {
+              "description": "Extensions for copyright",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "extensible": {
+              "description": "Whether this is intended to be used with an extensible binding or not.",
+              "type": "true | false"
+            },
+            "extensible_": {
+              "description": "Extensions for extensible",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "compose": {
+              "description": "A set of criteria that provide the content logical definition of the value set by including or excluding codes from outside this value set.",
+              "$ref": "#/definitions/ValueSet.Compose"
+            },
+            "expansion": {
+              "description": "A value set can also be \"expanded\", where the value set is turned into a simple collection of enumerated codes. This element holds the expansion, if it has been performed.",
+              "$ref": "#/definitions/ValueSet.Expansion"
+            }
+          },
+          "required": [
+            "resourceType"
+          ]
+        }
+      ]
+    },
+    "ValueSet.Contact": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A value set specifies a set of codes drawn from one or more code systems.",
+          "properties": {
+            "name": {
+              "description": "The name of an individual to contact regarding the value set.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "telecom": {
+              "description": "Contact details for individual (if a name was provided) or the publisher.",
+              "type": "array",
+              "items": {
+                "$ref": "ContactPoint.schema.json/definitions/ContactPoint"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ValueSet.Compose": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A value set specifies a set of codes drawn from one or more code systems.",
+          "properties": {
+            "import": {
+              "description": "Includes the contents of the referenced value set as a part of the contents of this value set. This is an absolute URI that is a reference to ValueSet.url.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "import_": {
+              "description": "Extensions for import",
+              "items": {
+                "$ref": "Element.schema.json/definitions/Element"
+              }
+            },
+            "include": {
+              "description": "Include one or more codes from a code system.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ValueSet.Include"
+              }
+            },
+            "exclude": {
+              "description": "Exclude one or more codes from the value set.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ValueSet.Include"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ValueSet.Include": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A value set specifies a set of codes drawn from one or more code systems.",
+          "properties": {
+            "system": {
+              "description": "An absolute URI which is the code system from which the selected codes come from.",
+              "type": "string"
+            },
+            "system_": {
+              "description": "Extensions for system",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "version": {
+              "description": "The version of the code system that the codes are selected from.",
+              "type": "string"
+            },
+            "version_": {
+              "description": "Extensions for version",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "concept": {
+              "description": "Specifies a concept to be included or excluded.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ValueSet.Concept"
+              }
+            },
+            "filter": {
+              "description": "Select concepts by specify a matching criteria based on the properties (including relationships) defined by the system. If multiple filters are specified, they SHALL all be true.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ValueSet.Filter"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ValueSet.Concept": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A value set specifies a set of codes drawn from one or more code systems.",
+          "properties": {
+            "code": {
+              "description": "Specifies a code for the concept to be included or excluded.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "code_": {
+              "description": "Extensions for code",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "display": {
+              "description": "The text to display to the user for this concept in the context of this valueset. If no display is provided, then applications using the value set use the display specified for the code by the system.",
+              "type": "string"
+            },
+            "display_": {
+              "description": "Extensions for display",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "designation": {
+              "description": "Additional representations for this concept when used in this value set - other languages, aliases, specialized purposes, used for particular purposes, etc.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ValueSet.Designation"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ValueSet.Designation": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A value set specifies a set of codes drawn from one or more code systems.",
+          "properties": {
+            "language": {
+              "description": "The language this designation is defined for.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "language_": {
+              "description": "Extensions for language",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "use": {
+              "description": "A code that details how this designation would be used.",
+              "$ref": "Coding.schema.json/definitions/Coding"
+            },
+            "value": {
+              "description": "The text value for this designation.",
+              "type": "string"
+            },
+            "value_": {
+              "description": "Extensions for value",
+              "$ref": "Element.schema.json/definitions/Element"
+            }
+          }
+        }
+      ]
+    },
+    "ValueSet.Filter": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A value set specifies a set of codes drawn from one or more code systems.",
+          "properties": {
+            "property": {
+              "description": "A code that identifies a property defined in the code system.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "property_": {
+              "description": "Extensions for property",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "op": {
+              "description": "The kind of operation to perform as a part of the filter criteria.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "op_": {
+              "description": "Extensions for op",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "value": {
+              "description": "The match value may be either a code defined by the system, or a string value, which is a regex match on the literal string of the property value.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "value_": {
+              "description": "Extensions for value",
+              "$ref": "Element.schema.json/definitions/Element"
+            }
+          }
+        }
+      ]
+    },
+    "ValueSet.Expansion": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A value set specifies a set of codes drawn from one or more code systems.",
+          "properties": {
+            "identifier": {
+              "description": "An identifier that uniquely identifies this expansion of the valueset. Systems may re-use the same identifier as long as the expansion and the definition remain the same, but are not required to do so.",
+              "type": "string"
+            },
+            "identifier_": {
+              "description": "Extensions for identifier",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "timestamp": {
+              "description": "The time at which the expansion was produced by the expanding system.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            },
+            "timestamp_": {
+              "description": "Extensions for timestamp",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "total": {
+              "description": "The total number of concepts in the expansion. If the number of concept nodes in this resource is less than the stated number, then the server can return more using the offset parameter.",
+              "type": "number",
+              "pattern": "-?([0]|([1-9][0-9]*))"
+            },
+            "total_": {
+              "description": "Extensions for total",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "offset": {
+              "description": "If paging is being used, the offset at which this resource starts.  I.e. this resource is a partial view into the expansion. If paging is not being used, this element SHALL not be present.",
+              "type": "number",
+              "pattern": "-?([0]|([1-9][0-9]*))"
+            },
+            "offset_": {
+              "description": "Extensions for offset",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "parameter": {
+              "description": "A parameter that controlled the expansion process. These parameters may be used by users of expanded value sets to check whether the expansion is suitable for a particular purpose, or to pick the correct expansion.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ValueSet.Parameter"
+              }
+            },
+            "contains": {
+              "description": "The codes that are contained in the value set expansion.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ValueSet.Contains"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "ValueSet.Parameter": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A value set specifies a set of codes drawn from one or more code systems.",
+          "properties": {
+            "name": {
+              "description": "The name of the parameter.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "valueString": {
+              "description": "The value of the parameter.",
+              "type": "string"
+            },
+            "valueString_": {
+              "description": "Extensions for valueString",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "valueBoolean": {
+              "description": "The value of the parameter.",
+              "type": "true | false"
+            },
+            "valueBoolean_": {
+              "description": "Extensions for valueBoolean",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "valueInteger": {
+              "description": "The value of the parameter.",
+              "pattern": "-?([0]|([1-9][0-9]*))",
+              "type": "number"
+            },
+            "valueInteger_": {
+              "description": "Extensions for valueInteger",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "valueDecimal": {
+              "description": "The value of the parameter.",
+              "pattern": "-?([0]|([1-9][0-9]*))(\\.[0-9]+)?",
+              "type": "number"
+            },
+            "valueDecimal_": {
+              "description": "Extensions for valueDecimal",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "valueUri": {
+              "description": "The value of the parameter.",
+              "type": "string"
+            },
+            "valueUri_": {
+              "description": "Extensions for valueUri",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "valueCode": {
+              "description": "The value of the parameter.",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*",
+              "type": "string"
+            },
+            "valueCode_": {
+              "description": "Extensions for valueCode",
+              "$ref": "Element.schema.json/definitions/Element"
+            }
+          }
+        }
+      ]
+    },
+    "ValueSet.Contains": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A value set specifies a set of codes drawn from one or more code systems.",
+          "properties": {
+            "system": {
+              "description": "An absolute URI which is the code system in which the code for this item in the expansion is defined.",
+              "type": "string"
+            },
+            "system_": {
+              "description": "Extensions for system",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "abstract": {
+              "description": "If true, this entry is included in the expansion for navigational purposes, and the user cannot select the code directly as a proper value.",
+              "type": "true | false"
+            },
+            "abstract_": {
+              "description": "Extensions for abstract",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "version": {
+              "description": "The version of this code system that defined this code and/or display. This should only be used with code systems that do not enforce concept permanence.",
+              "type": "string"
+            },
+            "version_": {
+              "description": "Extensions for version",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "code": {
+              "description": "The code for this item in the expansion hierarchy. If this code is missing the entry in the hierarchy is a place holder (abstract) and does not represent a valid code in the value set.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "code_": {
+              "description": "Extensions for code",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "display": {
+              "description": "The recommended display for this item in the expansion.",
+              "type": "string"
+            },
+            "display_": {
+              "description": "Extensions for display",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "contains": {
+              "description": "Other codes and entries contained under this entry in the hierarchy.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ValueSet.Contains"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

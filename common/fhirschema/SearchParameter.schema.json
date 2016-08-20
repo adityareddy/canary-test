@@ -1,0 +1,210 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://hl7.org/fhir/json-schema/SearchParameter",
+  "$ref": "#/definitions/SearchParameter",
+  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "definitions": {
+    "SearchParameter": {
+      "allOf": [
+        {
+          "$ref": "DomainResource.schema.json/definitions/DomainResource"
+        },
+        {
+          "description": "A search parameter that defines a named search item that can be used to search/filter on a resource.",
+          "properties": {
+            "resourceType": {
+              "description": "This is a SearchParameter resource",
+              "type": "string",
+              "enum": [
+                "SearchParameter"
+              ]
+            },
+            "url": {
+              "description": "An absolute URL that is used to identify this search parameter when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this search parameter is (or will be) published.",
+              "type": "string"
+            },
+            "url_": {
+              "description": "Extensions for url",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "name": {
+              "description": "A free text natural language name identifying the search parameter.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "status": {
+              "description": "The status of this search parameter definition.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "status_": {
+              "description": "Extensions for status",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "experimental": {
+              "description": "A flag to indicate that this search parameter definition is authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.",
+              "type": "true | false"
+            },
+            "experimental_": {
+              "description": "Extensions for experimental",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "date": {
+              "description": "The date  (and optionally time) when the search parameter definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the search parameter changes.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            },
+            "date_": {
+              "description": "Extensions for date",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "publisher": {
+              "description": "The name of the individual or organization that published the search parameter.",
+              "type": "string"
+            },
+            "publisher_": {
+              "description": "Extensions for publisher",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "contact": {
+              "description": "Contacts to assist a user in finding and communicating with the publisher.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/SearchParameter.Contact"
+              }
+            },
+            "useContext": {
+              "description": "The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of search parameters.",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "requirements": {
+              "description": "The Scope and Usage that this search parameter was created to meet.",
+              "type": "string"
+            },
+            "requirements_": {
+              "description": "Extensions for requirements",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "code": {
+              "description": "The code used in the URL or the parameter name in a parameters resource for this search parameter.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "code_": {
+              "description": "Extensions for code",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "base": {
+              "description": "The base resource type that this search parameter refers to.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "base_": {
+              "description": "Extensions for base",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "type": {
+              "description": "The type of value a search parameter refers to, and how the content is interpreted.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "type_": {
+              "description": "Extensions for type",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "description": {
+              "description": "A description of the search parameters and how it used.",
+              "type": "string"
+            },
+            "description_": {
+              "description": "Extensions for description",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "expression": {
+              "description": "A FluentPath expression that returns a set of elements for the search parameter.",
+              "type": "string"
+            },
+            "expression_": {
+              "description": "Extensions for expression",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "xpath": {
+              "description": "An XPath expression that returns a set of elements for the search parameter.",
+              "type": "string"
+            },
+            "xpath_": {
+              "description": "Extensions for xpath",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "xpathUsage": {
+              "description": "How the search parameter relates to the set of elements returned by evaluating the xpath query.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "xpathUsage_": {
+              "description": "Extensions for xpathUsage",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "target": {
+              "description": "Types of resource (if a resource is referenced).",
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+              }
+            },
+            "target_": {
+              "description": "Extensions for target",
+              "items": {
+                "$ref": "Element.schema.json/definitions/Element"
+              }
+            },
+            "component": {
+              "description": "Used to define the parts of a composite search parameter.",
+              "type": "array",
+              "items": {
+                "$ref": "Reference.schema.json/definitions/Reference"
+              }
+            }
+          },
+          "required": [
+            "resourceType"
+          ]
+        }
+      ]
+    },
+    "SearchParameter.Contact": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "A search parameter that defines a named search item that can be used to search/filter on a resource.",
+          "properties": {
+            "name": {
+              "description": "The name of an individual to contact regarding the search parameter.",
+              "type": "string"
+            },
+            "name_": {
+              "description": "Extensions for name",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "telecom": {
+              "description": "Contact details for individual (if a name was provided) or the publisher.",
+              "type": "array",
+              "items": {
+                "$ref": "ContactPoint.schema.json/definitions/ContactPoint"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

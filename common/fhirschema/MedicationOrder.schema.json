@@ -1,0 +1,321 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://hl7.org/fhir/json-schema/MedicationOrder",
+  "$ref": "#/definitions/MedicationOrder",
+  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "definitions": {
+    "MedicationOrder": {
+      "allOf": [
+        {
+          "$ref": "DomainResource.schema.json/definitions/DomainResource"
+        },
+        {
+          "description": "An order for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called \"MedicationOrder\" rather than \"MedicationPrescription\" to generalize the use across inpatient and outpatient settings as well as for care plans, etc.",
+          "properties": {
+            "resourceType": {
+              "description": "This is a MedicationOrder resource",
+              "type": "string",
+              "enum": [
+                "MedicationOrder"
+              ]
+            },
+            "identifier": {
+              "description": "External identifier - one that would be used by another non-FHIR system - for example a re-imbursement system might issue its own id for each prescription that is created.  This is particularly important where FHIR only provides part of an entire workflow process where records have to be tracked through an entire system.",
+              "type": "array",
+              "items": {
+                "$ref": "Identifier.schema.json/definitions/Identifier"
+              }
+            },
+            "status": {
+              "description": "A code specifying the state of the order.  Generally this will be active or completed state.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "status_": {
+              "description": "Extensions for status",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "medicationCodeableConcept": {
+              "description": "Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.",
+              "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+            },
+            "medicationReference": {
+              "description": "Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "patient": {
+              "description": "A link to a resource representing the person to whom the medication will be given.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "encounter": {
+              "description": "A link to a resource that identifies the particular occurrence of contact between patient and health care provider.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "dateWritten": {
+              "description": "The date (and perhaps time) when the prescription was initially written.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            },
+            "dateWritten_": {
+              "description": "Extensions for dateWritten",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "prescriber": {
+              "description": "The healthcare professional responsible for authorizing the initial prescription.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "reasonCode": {
+              "description": "Can be the reason or the indication for writing the prescription.",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "reasonReference": {
+              "description": "Condition that supports why the prescription is being written.",
+              "type": "array",
+              "items": {
+                "$ref": "Reference.schema.json/definitions/Reference"
+              }
+            },
+            "note": {
+              "description": "Extra information about the prescription that could not be conveyed by the other attributes.",
+              "type": "array",
+              "items": {
+                "$ref": "Annotation.schema.json/definitions/Annotation"
+              }
+            },
+            "category": {
+              "description": "Indicates where type of medication order and where the medication is expected to be consumed or administered.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "category_": {
+              "description": "Extensions for category",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "dosageInstruction": {
+              "description": "Indicates how the medication is to be used by the patient.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MedicationOrder.DosageInstruction"
+              }
+            },
+            "dispenseRequest": {
+              "description": "Indicates the specific details for the dispense or medication supply part of a medication order (also known as a Medication Prescription).  Note that this information is NOT always sent with the order.  There may be in some settings (e.g. hospitals) institutional or system support for completing the dispense details in the pharmacy department.",
+              "$ref": "#/definitions/MedicationOrder.DispenseRequest"
+            },
+            "substitution": {
+              "description": "Indicates whether or not substitution can or should be part of the dispense. In some cases substitution must happen, in other cases substitution must not happen, and in others it does not matter. This block explains the prescriber\u0027s intent. If nothing is specified substitution may be done.",
+              "$ref": "#/definitions/MedicationOrder.Substitution"
+            },
+            "priorPrescription": {
+              "description": "A link to a resource representing an earlier order related order or prescription.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "eventHistory": {
+              "description": "A summary of the events of interest that have occurred as the request is processed; e.g. when the order was verified or when it was completed.",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MedicationOrder.EventHistory"
+              }
+            }
+          },
+          "required": [
+            "resourceType"
+          ]
+        }
+      ]
+    },
+    "MedicationOrder.DosageInstruction": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "An order for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called \"MedicationOrder\" rather than \"MedicationPrescription\" to generalize the use across inpatient and outpatient settings as well as for care plans, etc.",
+          "properties": {
+            "text": {
+              "description": "Free text dosage instructions can be used for cases where the instructions are too complex to code.  The content of this attribute does not include the name or description of the medication. When coded instructions are present, the free text instructions may still be present for display to humans taking or administering the medication. It is expected that the text instructions will always be populated.  If the dosage.timing attribute is also populated, then the dosage.text should reflect the same information as the timing.",
+              "type": "string"
+            },
+            "text_": {
+              "description": "Extensions for text",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "additionalInstructions": {
+              "description": "Additional instructions such as \"Swallow with plenty of water\" which may or may not be coded.",
+              "type": "array",
+              "items": {
+                "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+              }
+            },
+            "timing": {
+              "description": "The timing schedule for giving the medication to the patient. The Schedule data type allows many different expressions. For example: \"Every 8 hours\"; \"Three times a day\"; \"1/2 an hour before breakfast for 10 days from 23-Dec 2011:\"; \"15 Oct 2013, 17 Oct 2013 and 1 Nov 2013\".  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn\u0027t imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period.",
+              "$ref": "Timing.schema.json/definitions/Timing"
+            },
+            "asNeededBoolean": {
+              "description": "Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).",
+              "type": "true | false"
+            },
+            "asNeededBoolean_": {
+              "description": "Extensions for asNeededBoolean",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "asNeededCodeableConcept": {
+              "description": "Indicates whether the Medication is only taken when needed within a specific dosing schedule (Boolean option), or it indicates the precondition for taking the Medication (CodeableConcept).",
+              "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+            },
+            "siteCodeableConcept": {
+              "description": "A coded specification of the anatomic site where the medication first enters the body.",
+              "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+            },
+            "siteReference": {
+              "description": "A coded specification of the anatomic site where the medication first enters the body.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "route": {
+              "description": "A code specifying the route or physiological path of administration of a therapeutic agent into or onto a patient\u0027s body.",
+              "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+            },
+            "method": {
+              "description": "A coded value indicating the method by which the medication is introduced into or onto the body. Most commonly used for injections.  For examples, Slow Push; Deep IV.",
+              "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+            },
+            "doseRange": {
+              "description": "The amount of therapeutic or other substance given at one administration event.",
+              "$ref": "Range.schema.json/definitions/Range"
+            },
+            "doseSimpleQuantity": {
+              "description": "The amount of therapeutic or other substance given at one administration event.",
+              "$ref": "SimpleQuantity.schema.json/definitions/SimpleQuantity"
+            },
+            "maxDosePerPeriod": {
+              "description": "The maximum total quantity of a therapeutic substance that may be administered to a subject over the period of time.  For example, 1000mg in 24 hours.",
+              "$ref": "Ratio.schema.json/definitions/Ratio"
+            },
+            "maxDosePerAdministration": {
+              "description": "The maximum total quantity of a therapeutic substance that may be administered to a subject per administration.",
+              "$ref": "SimpleQuantity.schema.json/definitions/SimpleQuantity"
+            },
+            "maxDosePerLifetime": {
+              "description": "The maximum total quantity of a therapeutic substance that may be administered per lifetime of the subject.",
+              "$ref": "SimpleQuantity.schema.json/definitions/SimpleQuantity"
+            },
+            "rateRatio": {
+              "description": "Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn\u0027t imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period.",
+              "$ref": "Ratio.schema.json/definitions/Ratio"
+            },
+            "rateRange": {
+              "description": "Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn\u0027t imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period.",
+              "$ref": "Range.schema.json/definitions/Range"
+            },
+            "rateSimpleQuantity": {
+              "description": "Identifies the speed with which the medication was or will be introduced into the patient. Typically the rate for an infusion e.g. 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per unit of time e.g. 500 ml per 2 hours.   Other examples: 200 mcg/min or 200 mcg/1 minute; 1 liter/8 hours.  Sometimes, a rate can imply duration when expressed as total volume / duration (e.g.  500mL/2 hours implies a duration of 2 hours).  However, when rate doesn\u0027t imply duration (e.g. 250mL/hour), then the timing.repeat.duration is needed to convey the infuse over time period.",
+              "$ref": "SimpleQuantity.schema.json/definitions/SimpleQuantity"
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrder.DispenseRequest": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "An order for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called \"MedicationOrder\" rather than \"MedicationPrescription\" to generalize the use across inpatient and outpatient settings as well as for care plans, etc.",
+          "properties": {
+            "validityPeriod": {
+              "description": "This indicates the validity period of a prescription (stale dating the Prescription).",
+              "$ref": "Period.schema.json/definitions/Period"
+            },
+            "numberOfRepeatsAllowed": {
+              "description": "An integer indicating the number of times, in addition to the original dispense, (aka refills or repeats) that the patient can receive the prescribed medication. Usage Notes: This integer does NOT include the original order dispense. This means that if an order indicates dispense 30 tablets plus \"3 repeats\", then the order can be dispensed a total of 4 times and the patient can receive a total of 120 tablets.",
+              "type": "number",
+              "pattern": "[1-9][0-9]*"
+            },
+            "numberOfRepeatsAllowed_": {
+              "description": "Extensions for numberOfRepeatsAllowed",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "quantity": {
+              "description": "The amount that is to be dispensed for one fill.",
+              "$ref": "SimpleQuantity.schema.json/definitions/SimpleQuantity"
+            },
+            "expectedSupplyDuration": {
+              "description": "Identifies the period time over which the supplied product is expected to be used, or the length of time the dispense is expected to last.",
+              "$ref": "Duration.schema.json/definitions/Duration"
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrder.Substitution": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "An order for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called \"MedicationOrder\" rather than \"MedicationPrescription\" to generalize the use across inpatient and outpatient settings as well as for care plans, etc.",
+          "properties": {
+            "allowed": {
+              "description": "True if the prescriber allows a different drug to be dispensed from what was prescribed.",
+              "type": "true | false"
+            },
+            "allowed_": {
+              "description": "Extensions for allowed",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "reason": {
+              "description": "Indicates the reason for the substitution, or why substitution must or must not be performed.",
+              "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+            }
+          }
+        }
+      ]
+    },
+    "MedicationOrder.EventHistory": {
+      "allOf": [
+        {
+          "$ref": "BackboneElement.schema.json/definitions/BackboneElement"
+        },
+        {
+          "description": "An order for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called \"MedicationOrder\" rather than \"MedicationPrescription\" to generalize the use across inpatient and outpatient settings as well as for care plans, etc.",
+          "properties": {
+            "status": {
+              "description": "The status for the event.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "status_": {
+              "description": "Extensions for status",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "action": {
+              "description": "The action that was taken (e.g. verify, discontinue).",
+              "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+            },
+            "dateTime": {
+              "description": "The date/time at which the event occurred.",
+              "type": "string",
+              "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1])(T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00)))?)?)?"
+            },
+            "dateTime_": {
+              "description": "Extensions for dateTime",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "actor": {
+              "description": "The person responsible for taking the action.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "reason": {
+              "description": "The reason why the action was taken.",
+              "$ref": "CodeableConcept.schema.json/definitions/CodeableConcept"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

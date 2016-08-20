@@ -1,0 +1,172 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://hl7.org/fhir/json-schema/Coverage",
+  "$ref": "#/definitions/Coverage",
+  "description": "see http://hl7.org/fhir/json.html#schema for information about the FHIR Json Schemas",
+  "definitions": {
+    "Coverage": {
+      "allOf": [
+        {
+          "$ref": "DomainResource.schema.json/definitions/DomainResource"
+        },
+        {
+          "description": "Financial instrument which may be used to pay for or reimburse health care products and services.",
+          "properties": {
+            "resourceType": {
+              "description": "This is a Coverage resource",
+              "type": "string",
+              "enum": [
+                "Coverage"
+              ]
+            },
+            "status": {
+              "description": "The status of the resource instance.",
+              "type": "string",
+              "pattern": "[^\\s]+([\\s]?[^\\s]+)*"
+            },
+            "status_": {
+              "description": "Extensions for status",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "issuerIdentifier": {
+              "description": "The program or plan underwriter or payor including both insurance and non-insurance agreements, such as patient-pay agreements.",
+              "$ref": "Identifier.schema.json/definitions/Identifier"
+            },
+            "issuerReference": {
+              "description": "The program or plan underwriter or payor including both insurance and non-insurance agreements, such as patient-pay agreements.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "isAgreement": {
+              "description": "A self, or other, payment agreement not an insurance policy.",
+              "type": "true | false"
+            },
+            "isAgreement_": {
+              "description": "Extensions for isAgreement",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "bin": {
+              "description": "Business Identification Number (BIN number) used to identify the routing  of eClaims.",
+              "type": "string"
+            },
+            "bin_": {
+              "description": "Extensions for bin",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "period": {
+              "description": "Time period during which the coverage is in force. A missing start date indicates the start date isn\u0027t known, a missing end date means the coverage is continuing to be in force.",
+              "$ref": "Period.schema.json/definitions/Period"
+            },
+            "type": {
+              "description": "The type of coverage: social program, medical plan, accident coverage (workers compensation, auto), group health.",
+              "$ref": "Coding.schema.json/definitions/Coding"
+            },
+            "planholderIdentifier": {
+              "description": "The party who \u0027owns\u0027 the insurance contractual relationship to the policy or to whom the benefit of the policy is due.",
+              "$ref": "Identifier.schema.json/definitions/Identifier"
+            },
+            "planholderReference": {
+              "description": "The party who \u0027owns\u0027 the insurance contractual relationship to the policy or to whom the benefit of the policy is due.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "beneficiaryIdentifier": {
+              "description": "The party who benefits from the insurance coverage.",
+              "$ref": "Identifier.schema.json/definitions/Identifier"
+            },
+            "beneficiaryReference": {
+              "description": "The party who benefits from the insurance coverage.",
+              "$ref": "Reference.schema.json/definitions/Reference"
+            },
+            "relationship": {
+              "description": "The relationship of beneficiary (patient) (subscriber) to the the planholder.",
+              "$ref": "Coding.schema.json/definitions/Coding"
+            },
+            "identifier": {
+              "description": "The main (and possibly only) identifier for the coverage - often referred to as a Member Id, Subscriber Id, Certificate number or Personal Health Number or Case ID.",
+              "type": "array",
+              "items": {
+                "$ref": "Identifier.schema.json/definitions/Identifier"
+              }
+            },
+            "group": {
+              "description": "Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID.",
+              "type": "string"
+            },
+            "group_": {
+              "description": "Extensions for group",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "subGroup": {
+              "description": "Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID.",
+              "type": "string"
+            },
+            "subGroup_": {
+              "description": "Extensions for subGroup",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "plan": {
+              "description": "Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group. May also be referred to as a Policy or Group ID.",
+              "type": "string"
+            },
+            "plan_": {
+              "description": "Extensions for plan",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "subPlan": {
+              "description": "Identifies a sub-style or sub-collective of coverage issues by the underwriter, for example may be used to identify a specific employer group within a class of employers. May be referred to as a Section or Division ID.",
+              "type": "string"
+            },
+            "subPlan_": {
+              "description": "Extensions for subPlan",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "class": {
+              "description": "Identifies a style or collective of coverage issues by the underwriter, for example may be used to identify a class of coverage or employer group.",
+              "type": "string"
+            },
+            "class_": {
+              "description": "Extensions for class",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "dependent": {
+              "description": "A unique identifier for a dependent under the coverage.",
+              "type": "number",
+              "pattern": "[1-9][0-9]*"
+            },
+            "dependent_": {
+              "description": "Extensions for dependent",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "sequence": {
+              "description": "An optional counter for a particular instance of the identified coverage which increments upon each renewal.",
+              "type": "number",
+              "pattern": "[1-9][0-9]*"
+            },
+            "sequence_": {
+              "description": "Extensions for sequence",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "network": {
+              "description": "The identifier for a community of providers.",
+              "type": "string"
+            },
+            "network_": {
+              "description": "Extensions for network",
+              "$ref": "Element.schema.json/definitions/Element"
+            },
+            "contract": {
+              "description": "The policy(s) which constitute this insurance coverage.",
+              "type": "array",
+              "items": {
+                "$ref": "Reference.schema.json/definitions/Reference"
+              }
+            }
+          },
+          "required": [
+            "relationship",
+            "resourceType"
+          ]
+        }
+      ]
+    }
+  }
+}
