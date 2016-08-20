@@ -35,6 +35,10 @@
   "auth": {
   },
   "parse": {
+    "body-parser#json": {}
+  },
+  "routes:before": {
+    "./middleware/json-schema-validator": {}
   },
   "routes": {
     "loopback#rest": {
