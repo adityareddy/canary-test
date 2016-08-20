@@ -1,5 +1,10 @@
 var validate = require('express-jsonschema').validate;
-var modelSchemas
+var modelSchemas = require('require-all')({
+  dirname     :  __dirname + '/controllers',
+  filter      :  /(.+Controller)\.js$/,
+  excludeDirs :  /^\.(git|svn)$/,
+  recursive   : true
+});
 
 module.exports = function() {
   return function validator(req, res, next) {
